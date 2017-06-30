@@ -1,0 +1,152 @@
+.motos{
+   position:relative;
+   float:left;
+   z-index:-1;
+   padding-right:0px;
+   padding-left:0px;
+}
+
+.participa{
+    padding-left:60px;
+    transform: scale(1.3);
+    padding-top: 120px;
+   padding-bottom: 40px;  
+}
+
+.participa2{
+    #padding-left:60px;
+    #transform: scale(1.3);
+    padding-top: 120px;
+   #padding-bottom: 40px;  
+}
+
+a.links{ 
+   color:white;
+   font-size:40px;
+   
+}
+
+.bod{
+    background-color: #F7AD26;
+    padding-left:0px;
+    font-family: "Arial";
+    
+font-weight: 800;
+}
+
+.moto{
+    position: relative;
+    z-index: -1;
+}
+
+.text{
+    color:white;
+    font-size: 16pt;
+    font-weight: 800;
+}
+
+textarea, input, button { outline: none; }
+
+.logo{
+    top:60px;
+    transform: scale(1.5);
+}
+
+.myform{
+    background-image:url(../../Splash.png);
+    background-repeat:no-repeat;
+    background-size:contain;
+    height:800px;
+    
+    
+}
+
+.login{
+    width:90%;
+    background-color: 
+}
+
+.mylabel{
+    float:left;
+    text-align: left;
+    
+}
+
+.inputs{
+    float:left;
+    text-align: left;  
+}
+
+.buttonform{
+    color:white;
+    font-size: 40px;
+    font-weight: 100;
+    text-align: center;
+    background-color: #fec303;
+    margin:0px;
+    margin-left: 12px;
+    width:8.33333333%;
+    float:left;
+    border: none;
+}
+
+.quart{
+    color:white;
+}
+
+form{
+    outline-color: transparent;
+  outline-style: none;
+}
+
+.buttonform3{
+    color:white;
+    font-size: 40px;
+    font-weight: 100;
+    text-align: center;
+    background-color: #fa9910;
+    margin:0px;
+    
+    width:8.33333333%;
+    float:left;
+    border: none;
+}
+
+.buttonform4{
+    color:white;
+    font-size: 18px;
+    font-weight: 400;
+    text-align: right;
+    margin-left:22px;
+    text-align: left;
+    width:80.3333333%;
+    float:left;  
+}
+
+.buttonform5{
+    color:white;
+    font-size: 18px;
+    font-weight: 400;
+    text-align: center;
+    float:left;  
+}
+
+.bgbg{
+    background-color: transparent;
+}
+.buttonform2{
+    color:white;
+    font-size: 20px;
+    font-weight: 400;
+    text-align: right;
+    margin:0;
+    float:right;
+}
+
+.participar{
+    font-size: 40px;
+    font-weight: 600;
+    color:#9e1e51;
+    text-shadow: 2px 2px white;
+    text-shadow: -2px -2px white;
+}

@@ -1,0 +1,9 @@
+ID,Nombre,Ciudad,Cliente,RazonSocial,Direccion
+
+<% @stores.each do |store| %>
+
+<%= store.id %>,<%= store.nombre %>,<%= store.ciudad %>,<%= store.cliente %>,<%= store.razon_social %>,<%= store.direccion %>
+
+
+
+<% end %>

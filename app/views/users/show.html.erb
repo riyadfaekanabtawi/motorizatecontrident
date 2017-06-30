@@ -1,0 +1,114 @@
+ <div class="row">
+        <div class="col-md-3">
+
+          <!-- Profile Image -->
+          <div class="box box-primary">
+            <div class="box-body box-profile">
+              <img class="profile-user-img img-responsive img-circle" src="<%= @user.photo.url(:small) %>" alt="User profile picture">
+
+              <h3 class="profile-username text-center"><%= @user.name %> <%= @user.surname %></h3>
+
+
+
+
+              <ul class="list-group list-group-unbordered">
+                <li class="list-group-item">
+                  <b>Email: </b> <a class="pull-right"><%= @user.email %></a>
+                </li>
+              
+            
+              </ul>
+
+          
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+
+          <!-- About Me Box -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Sobre Mi</h3>
+            </div>
+           
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-9">
+          <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+       
+              <li class="active"><a href="#settings" data-toggle="tab">Actualizar mi Información</a></li>
+            </ul>
+            <div class="tab-content">
+
+              <div class="active tab-pane" id="settings">
+               <form accept-charset="UTF-8" action="/users/<%= @user.id %>" class="form-horizontal" enctype="multipart/form-data" id="edit_user_1" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="_method" type="hidden" value="put" /></div>   
+                  <div class="form-group">
+                    <label for="inputName" class="col-sm-2 control-label">Nombre</label>
+
+                    <div class="col-sm-10">
+                     <input type="text" class="form-control" id="inputEmail"value="<%= @user.name %>" name="user[name]">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputEmail" class="col-sm-2 control-label">Apellido</label>
+
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="inputEmail"value="<%= @user.surname %>" name="user[surname]">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputName"  class="col-sm-2 control-label">Email</label>
+
+                    <div class="col-sm-10">
+                      <input type="email" name="user[email]" class="form-control" id="inputName" value="<%= @user.email %>">
+                    </div>
+                  </div>
+                 
+                 
+                  <div class="form-group">
+                    <label for="inputSkills"  class="col-sm-2 control-label">Contraseña</label>
+
+                    <div class="col-sm-10">
+                      <input type="text" name="user[password]" class="form-control" id="inputSkills" value="<%= @user.password %>">
+                    </div>
+                  </div>
+ <div class="form-group">
+                    <label for="inputSkills"  class="col-sm-2 control-label">Repetir Contraseña</label>
+
+                    <div class="col-sm-10">
+                      <input type="text" name="user[password_confirmation]" class="form-control" id="inputSkills" value="<%= @user.password_confirmation %>">
+                    </div>
+                  </div>
+
+ <div class="form-group">
+                    <label for="inputSkills"  class="col-sm-2 control-label">Imagen</label>
+
+                    <div class="col-sm-10">
+                       <input type="file" name="user[photo]"><br>
+                        <img class="profile-user-img img-responsive img-circle" src="<%= @user.photo.url(:small) %>" />
+                    </div>
+                  </div>
+
+
+                 
+
+         
+                  <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                      <button type="submit" class="btn btn-danger">Actualizar mi info</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <!-- /.tab-pane -->
+            </div>
+            <!-- /.tab-content -->
+          </div>
+          <!-- /.nav-tabs-custom -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->

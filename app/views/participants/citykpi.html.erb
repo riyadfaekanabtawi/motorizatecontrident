@@ -1,0 +1,92 @@
+<% if current_user %>
+<h1> KPI's de Ciudades </h1>
+  <% @ciudades.each do |store| %>
+  <% @tickets_city = Ticket.where('ticket_sucursal =?',Store.find_by_ciudad(store).nombre).count %>
+<div class="row">
+
+      <h2><%= store %></h2>
+        <div class="col-lg-4 col-xs-4">
+          <!-- small box -->
+          <div class="small-box bg-aqua">
+
+            <div class="inner">
+
+        <% @participants_city = Ticket.where('ticket_sucursal =?',Store.find_by_ciudad(store).nombre).uniq! {|e| e[:participant_id] } %>
+<% if @participants_city %>
+              <h3><%= @participants_city.count %></h3>
+<% else %>
+<h3>0</h3>
+<% end %>
+              <p>Nº de participantes</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-person-add"></i>
+            </div>
+
+
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-4 col-xs-4">
+          <!-- small box -->
+          <div class="small-box bg-green">
+            <div class="inner">
+
+              <h3><%= @tickets_city %>
+              <p>Nº de Tickets</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-stats-bars"></i>
+            </div>
+
+          </div>
+        </div>
+        <!-- ./col -->
+
+              <!-- ./col -->
+        <div class="col-lg-4 col-xs-4">
+          <!-- small box -->
+          <div class="small-box bg-red">
+            <div class="inner">
+ <h3><%= Ticket.where('ticket_sucursal =? AND created_at >=?',Store.find_by_ciudad(store).nombre,DateTime.now.utc.beginning_of_day).count %></h3>
+
+              <p>Nº de tickets de hoy dia</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-stats-bars"></i>
+            </div>
+
+          </div>
+        </div>
+        <!-- ./col -->
+</div>
+
+
+ <% end %>
+
+
+ <% else %>
+
+<div class="modal-danger">
+
+
+              <div class="modal-header">
+
+
+                <h4 class="modal-title">Oops!</h4>
+
+ </div>
+              <div class="modal-body">
+                <p>No tienes acceso a esta sección</p>
+              </div>
+
+
+
+          <!-- /.modal-dialog -->
+        </div>
+
+
+
+
+ <% end %>
+

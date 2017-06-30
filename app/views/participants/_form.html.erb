@@ -1,0 +1,89 @@
+<%= form_for(@participant, :html => { :multipart => true}) do |f| %>   
+
+       <div class="box-body">
+<div class="form-group">
+                  <label for="exampleInputEmail1">Nombre Participante</label>
+                 <%= f.text_field :nombre, class: 'form-control', placeholder: "Nombre Participante" %>
+                </div>
+
+<div class="form-group">
+                  <label for="exampleInputEmail1">Apellido Participante</label>
+                 <%= f.text_field :apellido, class: 'form-control', placeholder: "Apellido Participante" %>
+                </div>
+
+<div class="form-group">
+                  <label for="exampleInputEmail1">Nacimiento Participante</label>
+                 <%= f.text_field :nacimiento, class: 'form-control', placeholder: "ie: 01/12/2017" %>
+                </div>
+
+<div class="form-group">
+                  <label for="exampleInputEmail1">Email Participante</label>
+                 <%= f.text_field :email, class: 'form-control', placeholder: "ie: doe@doe.com" %>
+                </div>
+
+<div class="form-group">
+                  <label for="exampleInputEmail1">Celular Participante</label>
+                 <%= f.text_field :celular, class: 'form-control', placeholder: "ie: 5542312342" %>
+                </div>
+
+<div class="form-group">
+                  <label for="exampleInputEmail1">Contraseña</label>
+                 <%= f.text_field :password, class: 'form-control' %>
+                </div>
+
+<div class="form-group">
+                  <label for="exampleInputEmail1">Confirmar Contraseña</label>
+                 <%= f.text_field :password_confirmation, class: 'form-control' %>
+                </div>
+ 
+<div class="form-group">
+                  <label for="exampleInputEmail1">Imagen de Ticket</label>
+<input id="ticket_ticket_image" name="ticket[ticket_image]" type="file">
+
+  </div>
+<div class="form-group">
+                  <label for="exampleInputEmail1">Numero de Ticket</label>
+
+     <input type="text" name="ticket[ticket_number]" class="form-control">
+  </div>
+
+
+
+          <!-- /.form-group -->
+              <div class="form-group">
+                <label>Elije tu sucursal de ticket</label>
+                <select class="form-control select2" style="width: 100%;" name="ticket[ticket_sucursal]">
+<% @stores.each do |cat| %>	
+                                                                                <% if cat.nombre == cat.nombre %>
+<option selected><%= cat.nombre %></option>
+<% else %>
+         <option><%= cat.nombre %></option>
+<% end %>
+										<% end %>
+                </select>
+              </div>
+              <!-- /.form-group -->
+
+
+
+
+<div class="form-group">
+                  <label for="exampleInputEmail1">Fecha de Ticket</label>
+
+   <input type="text" name="ticket[ticket_date]" class="form-control">
+  </div>
+ 
+<div class="form-group">
+                  <label for="exampleInputEmail1">Calculo de Ticket</label>
+   <input type="text" name="ticket[ticket_calculo]" class="form-control">
+
+  </div>
+
+
+
+
+              </div>
+
+<button type="submit" name="submit" class="btn btn-primary">Cargar Participante</button>
+
+<% end %>

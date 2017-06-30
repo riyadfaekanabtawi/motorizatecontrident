@@ -1,0 +1,10 @@
+Participante,Fecha y hora de registro,Email Participante,Celular Participante,Nacimiento Participante,Estado,Numero Ticket,Sucursal Ticket,Ciudad,Calculo Ticket,Sobres Reales de Urna    
+ <% @tickets.each do |product| %>
+           
+          <% @participant = Participant.find(product.participant_id) %>    
+     
+                                                                 
+<%= Participant.find_by_nombre(@participant.nombre).nombre %>,<%= Participant.find_by_nombre(@participant.nombre).created_at.strftime("%d-%m-%Y %H:%M") %>,<%= Participant.find_by_nombre(@participant.nombre).email %>,<%= Participant.find_by_nombre(@participant.nombre).celular %>,<%= Participant.find_by_nombre(@participant.nombre).nacimiento %>,<%= Participant.find_by_nombre(@participant.nombre).status %>,<%= product.ticket_number %>,<%= product.ticket_sucursal %>,<% if Store.find_by_nombre(product.ticket_sucursal) %> <%= Store.find_by_nombre(product.ticket_sucursal).ciudad %><% end %>,<%= product.ticket_calculo %>,<% if Store.find_by_nombre(product.ticket_sucursal) %><%= Store.find_by_nombre(product.ticket_sucursal).real_value %><% end %>
+
+
+    <% end %>

@@ -1,0 +1,122 @@
+	
+
+
+
+<%= form_for(@user) do |f| %>
+								<div class="form-body">
+									<div class="form-group">
+										<label>Nombre Completo</label>
+										<div class="input-group">
+											<span class="input-group-addon">
+											<i class="fa fa-user"></i>
+											</span>
+											<%= f.text_field :name, class: 'form-control', placeholder: "Nombre Completo" %>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label>Nacimiento</label>
+										<div class="input-group">
+											<span class="input-group-addon">
+											<i class="fa fa-birthday-cake"></i>
+											</span>
+											  <%= f.text_field :nacimiento, class: 'form-control', placeholder: "Fecha de nacimiento ie : dd/mm/yyy" %>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label>Número Telefónico del Delivery</label>
+										<div class="input-group">
+											<span class="input-group-addon">
+											<i class="fa fa-mobile"></i>
+											</span>
+											<%= f.text_field :telefono, class: 'form-control', placeholder: "Número Telefónico del Delivery" %>
+										</div>
+									</div>
+
+										<div class="form-group">
+										<label>Licencia Delivery</label>
+										<div class="input-group">
+											<span class="input-group-addon">
+											<i class="fa fa-address-card"></i>
+											</span>
+											<%= f.text_field :licencia, class: 'form-control', placeholder: "Licencia de Delivery" %>
+										</div>
+									</div>
+
+
+
+
+										<div class="form-group">
+										<label>Imagen del Delivery</label>
+										<div class="input-group">
+											<span class="input-group-addon">
+											<i class="fa fa-file-image-o "></i>
+											</span>
+										     <%= f.file_field :user_avatarr %>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label>Email</label>
+										<div class="input-group">
+											<span class="input-group-addon">
+											<i class="fa fa-envelope"></i>
+											</span>
+											 <%= f.text_field :email, class: 'form-control', placeholder: "Email de Delivery" %>
+										</div>
+									</div>
+
+<div class="form-group">
+										<label>Capacitado</label><%= f.check_box :capacitado, {:class => "form-control"}, true, false %>
+										
+									</div>
+  
+<div class="form-group">
+										<label>Descripción Capacitación</label>
+										<div class="input-group">
+											<span class="input-group-addon">
+											<i class="fa fa-file-word-o"></i>
+											</span>
+											 <%= f.text_field :capacitacion_descripcion, class: 'form-control', placeholder: "Descripción Capacitación" %>
+										</div>
+									</div>
+
+
+
+
+									<div class="form-group">
+										<label for="exampleInputPassword1">Contraseña Delivery</label>
+										<div class="input-group">
+											  <%= f.password_field :password, class: 'form-control', placeholder: "Contraseña Delivery" %>
+											<span class="input-group-addon">
+											<i class="fa fa-lock"></i>
+											</span>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="exampleInputPassword1">Confirmar Contraseña Delivery</label>
+										<div class="input-group">
+											  <%= f.password_field :password_confirmation, class: 'form-control', placeholder: "Confirmar Contraseña Delivery" %>
+											<span class="input-group-addon">
+											<i class="fa fa-lock"></i>
+											</span>
+										</div>
+									</div>
+								
+								
+									
+									
+									
+								
+								
+									
+									
+								
+								</div>
+								<div align="center"class="form-actions">
+									<button type="submit" name="submit" class="btn btn-primary">Cargar Repartidor</button>
+									
+								</div>
+							<% end %>
+	

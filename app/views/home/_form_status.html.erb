@@ -1,0 +1,52 @@
+	
+
+<form accept-charset="UTF-8" action="/myparticipants" class="new_staffer" enctype="multipart/form-data" id="new_staffer" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="P51wG/otm3BiQ7h7aZbpL5Y0MuYbYCGgtZ7C+W6l0eI=" /></div>   
+
+<% @current_user ||= User.find(session[:user_id]) if session[:user_id] %>
+<input type="hidden" name="user_id" value="<%= @current_user.id %>"  />
+			
+<div class="form-body">
+									
+
+
+                                               <div class="form-group">
+						<label>Filtrar por Estado</label>
+
+										<div class="input-group">
+<span class="input-group-addon">
+											<i class="fa fa-cubes"></i>
+											</span>
+
+     <select name="status" value=params[:status] class="form-control">
+										
+
+<% if params[:stauts].to_s == "Agregado" %>
+
+      <option>No Agregado</option>	
+ <option selected>Agregado</option>
+
+<% elsif params[:stauts].to_s == "No Agregado" %>
+
+      <option selected>No Agregado</option>	
+ <option>Agregado</option>	
+
+<% else %>
+
+      <option>No Agregado</option>	
+ <option>Agregado</option>	
+<% end %>
+
+    </select>
+
+
+</div>
+										
+</div>
+
+						
+								
+								</div>
+								<button type="submit" name="submit" class="btn btn-primary pull-right">Filtrar</button>
+									
+							</form><br><br>
+	

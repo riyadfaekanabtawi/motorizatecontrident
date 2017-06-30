@@ -1,0 +1,48 @@
+	
+<script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" />
+ 
+<!-- Include Date Range Picker -->
+<script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+
+
+
+<form accept-charset="UTF-8" action="/" class="new_staffer" enctype="multipart/form-data" id="dateRangeFilter" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="P51wG/otm3BiQ7h7aZbpL5Y0MuYbYCGgtZ7C+W6l0eI=" /></div>   
+		
+<% @current_user ||= User.find(session[:user_id]) if session[:user_id] %>
+<input type="hidden" name="user_id" value="<%= @current_user.id %>" />
+								<div class="form-body">
+									
+
+
+                                               <div class="form-group">
+						<label>Selecciona una Rango de Fechas</label>
+<div class="input-group">
+<span class="input-group-addon">
+											<i class="fa fa-cubes"></i>
+											</span>
+
+   
+
+<input class="form-control" type="text" name="daterange" value="<%= params[:daterange] %>" />
+
+<script type="text/javascript">
+$(function() {
+    $('input[name="daterange"]').daterangepicker();
+
+
+});
+</script>
+
+
+</div>										
+</div>
+
+						
+								
+								</div>
+								<button type="submit" name="submit" class="btn btn-primary pull-right">Filtrar</button>
+							</form><br><br>
+	

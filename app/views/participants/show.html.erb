@@ -1,0 +1,354 @@
+ <style>
+
+   /* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fec303;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+}
+
+/* The Close Button */
+.close {
+    color: #ffffff;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close2{
+ color: #ffffff;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+
+}
+.close2:hover,
+.close2:focus {
+    color: #ffffff;
+    text-decoration: none;
+    cursor: pointer;
+}
+.close:hover,
+.close:focus {
+    color: #ffffff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+</style>
+
+ <div class="row">
+        <div class="col-md-12">
+
+          <!-- Profile Image -->
+          <div class="box box-primary">
+            <div class="box-body box-profile">
+              <!--<img class="profile-user-img img-responsive img-circle" src="" alt="Participant Ticket">-->
+
+              <h3 class="profile-username text-center"><%= @participant.nombre %> <%= @participant.apellido %></h3>
+
+     
+              <ul class="list-group list-group-unbordered">
+ <li class="list-group-item">
+                  <b>Tu Link: </b> <a  class="pull-right" href="/participants/<%= @participant.id %>-<%= @participant.nombre %>">/participants/<%= @participant.id %>-<%= @participant.nombre %></a>
+<td> ></td>
+                </li>
+
+
+
+                <li class="list-group-item">
+                  <b>Email: </b> <a class="pull-right"><%= @participant.email %></a>
+                </li>
+                <li class="list-group-item">
+                  <b>Telefono: </b> <a class="pull-right"><%= @participant.celular %></a>
+                </li>
+             <li class="list-group-item">
+                  <b>Nacimiento: </b> <a class="pull-right"> <%= @participant.nacimiento %></a>
+                </li>
+  <li class="list-group-item">
+                  <b>Estado: </b> <a class="pull-right"> <%= @participant.status %></a>
+                </li>
+              </ul>
+<% if current_user && @participant.status == "No Agregado" %>
+ <a href="/acceptParticipant?id=<%= @participant.id %>" class="btn btn-primary"> Agregar Participante</a>
+<% end %>
+<button id="myBtn" class="btn btn-primary">Agregar Ticket</button>
+
+<button id="myBtn2" class="btn btn-primary">Agregar Nota</button>
+
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div  class="modal-content" style="height:600px;">
+    <span class="close">&times;</span>
+    <p style="color:#ffffff;">Agregar Ticket</p>
+    <form accept-charset="UTF-8" action="/addTicketToParticipant" class="form-control first" enctype="multipart/form-data" id="addTicketToParticipant" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>    
+
+       <div class="box-body">
+
+
+
+ <input type="hidden" style="outline: none;border-color: inherit;-webkit-box-shadow: none;box-shadow: none;" name="ticket[participant_id]" class="form-control" value="<%= @participant.id %>"/>
+<br>
+<br>
+<div class="form-group">
+                  <label for="exampleInputEmail1" style="color:#ffffff;">Imagen de Ticket *</label>
+<input id="ticket_ticket_image" name="ticket[ticket_image]" type="file">
+
+  </div>
+<div class="form-group">
+                  <label for="exampleInputEmail1" style="color:#ffffff;">Número de Ticket *</label>
+
+     <input type="text" name="ticket[ticket_number]" class="form-control">
+  </div>
+<div class="form-group">
+                  <label for="exampleInputEmail1" style="color:#ffffff;">Sucursal *</label>
+<br>
+   
+<select class="input-sm col-sm-8 col-xs-8" name="ticket[ticket_sucursal]" style="color:#000;" required>
+
+<% for sucursal in @sucursales %>
+
+<option value="<%= sucursal.nombre %>"><%= sucursal.nombre %></option>
+<% end %>
+  
+
+</select>
+  </div>
+
+   <input type="hidden" name="ticket[ticket_date]" id="dateTicket" class="form-control">
+ <br>
+<div class="form-group">
+                  <label for="exampleInputEmail1" style="color:#ffffff;">Número de sobres que tiene la urna *</label>
+   <input type="text" name="ticket[ticket_calculo]" class="form-control">
+
+  </div>
+
+
+<img class="pull-right" src="http://mondelezassets.anabtatec-mobile.com/tang/ticket_example.png" />
+
+              </div>
+<button type="submit" name="submit" class="btn btn-primary">Cargar Ticket</button>
+
+ </form>
+
+  </div>
+
+</div>
+
+
+
+
+
+<div id="notaModal" class="modal">
+
+  <!-- Modal content -->
+  <div  class="modal-content" style="height:270px;">
+    <span class="close2">&times;</span>
+    <p style="color:#ffffff;">Agregar Nota al Participante</p>
+    <form accept-charset="UTF-8" action="/add_note_to_participant" class="form-control" enctype="multipart/form-data" id="add_note_to_participant" method="post">
+
+       <div class="box-body">
+
+
+
+
+<br>
+<br>
+
+<div class="form-group">
+                  <label for="exampleInputEmail1" style="color:#ffffff;">Nota sobre Participante *</label>
+
+     <input type="text" name="note" value="<%= @participant.note %>" class="form-control">
+  </div>
+
+
+  
+
+
+
+              </div>
+<button type="submit" name="submit" class="btn btn-primary">Guardar Nota</button>
+
+ <input  class="form-control" type="hidden" style="outline: none;border-color: inherit;-webkit-box-shadow: none;box-shadow: none; background-color:#fec303;" name="id" class="form-control" value="<%= @participant.id %>"/>
+<% if current_user %>
+ <input  class="form-control" type="hidden" style="outline: none;border-color: inherit;-webkit-box-shadow: none;box-shadow: none; background-color:#fec303;" name="adminID" class="form-control" value="<%= current_user.id %>"/>
+<% end %>
+ </form>
+
+  </div>
+
+</div>
+
+
+
+
+<script>
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+
+
+
+var modal2 = document.getElementById('notaModal');
+
+// Get the button that opens the modal
+var btn2 = document.getElementById("myBtn2");
+
+// Get the <span> element that closes the modal
+var span2 = document.getElementsByClassName("close2")[0];
+
+// When the user clicks the button, open the modal 
+btn2.onclick = function() {
+    modal2.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span2.onclick = function() {
+    modal2.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal2.style.display = "none";
+    }
+}
+</script>
+            </div>
+            <!-- /.box-body -->
+          </div>
+       
+        </div>
+  
+
+  
+     
+      </div>
+      <!-- /.row -->
+
+
+
+<div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Listado de Tickets de participante</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table id="example2" class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                  <th>Código de Participación</th>
+                  <th>Fecha</th>
+                  <th>Numero</th>
+                  <th>Calculo de sobres en urna</th>
+                  <th>Imagen</th>
+         
+             <th>Sucursal</th>
+
+ <th></th>
+                </tr>
+                </thead>
+                <tbody>
+ <% @participant.tickets.each do |ticket| %>
+                <tr>
+                  <td><%= ticket.id %></td>
+                  <td><%= ticket.ticket_date %></td>
+                  <td><%= ticket.ticket_number %></td>
+                  <td><%= ticket.ticket_calculo %></td>
+                  <td><img class="profile-user-img img-responsive img-circle" src="<%= ticket.ticket_image.url(:small) %>" /></td>
+                  <td><%= ticket.ticket_sucursal %></td>
+                   
+    
+
+                </tr>
+              
+<% end %>
+              
+                </tfoot>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+
+         
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
+
+
+<script>   
+
+    
+$(".first").submit(function(){
+
+var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth() + 1; //January is 0!
+
+var yyyy = today.getFullYear();
+if (dd < 10) {
+    dd = '0' + dd;
+}
+if (mm < 10) {
+    mm = "0" + mm;
+}
+today = dd + '/' + mm + '/' + yyyy;
+
+
+
+        $('#dateTicket').val(today);
+         document.getElementById("addTicketToParticipant").submit();
+    
+    });
+
+
+   
+</script>

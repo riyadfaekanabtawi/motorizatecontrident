@@ -1,0 +1,50 @@
+	
+
+<form style="" accept-charset="UTF-8" action="/" class="new_staffer" enctype="multipart/form-data" id="new_staffer3" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="P51wG/otm3BiQ7h7aZbpL5Y0MuYbYCGgtZ7C+W6l0eI=" /></div>   
+		
+<% @current_user ||= User.find(session[:user_id]) if session[:user_id] %>
+<input type="hidden" name="user_id" value="<%= @current_user.id %>" />
+								<div class="form-body">
+									
+
+
+                                               <div class="form-group">
+						<label>Selecciona una ciudad para filtrar</label>
+
+										<div class="input-group">
+<span class="input-group-addon">
+											<i class="fa fa-cubes"></i>
+											</span>
+
+     <select name="ciudad_score" value=params[:ciudad_score] class="form-control">
+										
+
+        <% @ciudades.each do |subcats| %>
+
+      <% if subcats == params[:ciudad_score].to_s %>	
+            <option selected><%= subcats %></option>   
+
+      <% else %>
+
+<% if params[:ciudad_score].to_s == subcats %>
+<option selected><%= subcats %></option>
+
+<% else  %>
+
+<option><%= subcats %></option>
+  <% end %>   
+     <% end %>           
+        <% end %>		
+    </select>
+
+
+</div>
+										
+</div>
+
+						
+								
+								</div>
+								<button type="submit" name="submit" class="btn btn-primary pull-right">Filtrar</button>
+							</form><br><br>
+	
